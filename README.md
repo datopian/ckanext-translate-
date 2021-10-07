@@ -35,7 +35,7 @@ To install ckanext-translate extension.
 ## API Documentation
 **API Endpont:** `/api/3/action/translate`
 
-`input` You can pass keys values text for the tranlation.  \
+`input` You can pass keys values text for the translate.  \
 `from` Parameter to specify the language code of the language you want to translate from. \
 `to` Parameter to specify the language code of the language you want to translate. 
 
@@ -57,15 +57,11 @@ Response example:
 ```json
 {
 "result": {
-  "output": [
-    {
-      "title": "Mon titre de jeu de données"
-    },
-    {
+  "output": {
+      "title": "Mon titre de jeu de données",
       "notes": "Quelques notes sur mon jeu de données."
     }
-  ]
- }  
+  }  
 }
 ```
 
