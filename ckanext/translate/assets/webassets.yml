@@ -1,0 +1,14 @@
+# translate-js:
+#   filter: rjsmin
+#   output: ckanext-translate/%(version)s-translate.js
+#   contents:
+#     - js/translate.js
+#   extra:
+#     preload:
+#       - base/main
+
+# translate-css:
+#   filter: cssrewrite
+#   output: ckanext-translate/%(version)s-translate.css
+#   contents:
+#     - css/translate.css
