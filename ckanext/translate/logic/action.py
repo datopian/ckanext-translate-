@@ -21,13 +21,13 @@ def translate(context, data_dict):
 
     translate_from = data_dict['from']
     translate_to = data_dict['to']
-    traslate_keys, traslate_values = zip(*data["input"].items())
+    translate_keys, translate_values = zip(*data["input"].items())
 
     if errors:
         raise tk.ValidationError(errors)
 
     try:
-        translation = language_translator.translate(text =list(traslate_values), 
+        translation = language_translator.translate(text =list(translate_values), 
             source = translate_from,
             target = translate_to,
             ).get_result()
@@ -35,9 +35,9 @@ def translate(context, data_dict):
     except ApiException as ex:  
         raise tk.ValidationError({'message': ex.message})
 
-    translated_dict = []
+    translated_dict = {}
     for index, translated_item in enumerate(translation['translations']):
-            translated_dict.append({ list(traslate_keys)[index]: translated_item['translation'] })
+            translated_dict.update({ list(translate_keys)[index]: translated_item['translation'] })
 
     return {"output" : translated_dict}
 
