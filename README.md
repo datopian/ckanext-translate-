@@ -1,6 +1,6 @@
 
 # ckanext-translate
-This extension provides an REST API that translates the requested words into the given languages. It uses [IBM Watson Language Translator](https://www.ibm.com/cloud/watson-language-translator) APIs on backend for translation.   
+This extension provides an REST API that translates the provided text into the given languages. At the moment, it uses [IBM Watson Language Translator](https://www.ibm.com/cloud/watson-language-translator) APIs on backend for translation. In the future, other third-part services can be integrated.
 
 
 ## Installation
