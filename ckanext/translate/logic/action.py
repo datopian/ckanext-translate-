@@ -4,10 +4,11 @@ from ckan.common import config
 import ckan.plugins.toolkit as tk
 import ckanext.translate.logic.schema as schema
 
-IBM_URL =  config.get('ckanext.translate.ibm_url')
-IBM_API_KEY = config.get('ckanext.translate.ibm_key')
 
 def translate(context, data_dict):
+    ibm_url =  config.get('ckanext.translate.ibm_url')
+    ibm_api_key = config.get('ckanext.translate.ibm_key')
+
     tk.check_access("translate", context, data_dict)
     data, errors = tk.navl_validate(
         data_dict, schema.translate(), context)
@@ -24,8 +25,8 @@ def translate(context, data_dict):
         }
 
     try:
-        response = requests.post('{}/v3/translate?{}'.format(IBM_URL, 'version=2018-05-01'), 
-                    auth=('apikey', IBM_API_KEY),
+        response = requests.post('{}/v3/translate?{}'.format(ibm_url, 'version=2018-05-01'), 
+                    auth=('apikey', ibm_api_key),
                     headers= {"Content-Type": "application/json"},
                     data=json.dumps(translate_req_dict)
                     )  

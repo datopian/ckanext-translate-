@@ -58,7 +58,6 @@ setup(
         namespace_packages=['ckanext'],
 
     install_requires=[
-      "ibm-watson>=5.3.0"
 
       # CKAN extensions should not list dependencies here, but in a separate
       # ``requirements.txt`` file.
