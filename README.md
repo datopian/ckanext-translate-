@@ -1,5 +1,6 @@
-Compatiable with [![CKAN](https://img.shields.io/badge/ckan-2.8-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.8) [![CKAN](https://img.shields.io/badge/ckan-2.9-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.9) , on the eailer version it hasn't been tested.
+ [![CKAN](https://img.shields.io/badge/ckan-2.8-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.8) [![CKAN](https://img.shields.io/badge/ckan-2.9-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.9) 
 
+ Note: This plugin is tested with CKAN 2.8 or later version but hasn't been tested on earlier version. 
 
 # ckanext-translate
 This extension provides an REST API that translates the provided text into the given languages. At the moment, it uses [IBM Watson Language Translator](https://www.ibm.com/cloud/watson-language-translator) APIs on backend for translation. In the future, other third-part services can be integrated.
