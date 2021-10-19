@@ -1,42 +1,42 @@
+import json
+import requests
 from ckan.common import config
 import ckan.plugins.toolkit as tk
 import ckanext.translate.logic.schema as schema
-from ibm_watson import LanguageTranslatorV3, ApiException
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
-IBM_URL =  config.get('ckanext.translate.ibm_url')
-IBM_API_KEY = config.get('ckanext.translate.ibm_key')
-
-authenticator = IAMAuthenticator(IBM_API_KEY)
-language_translator = LanguageTranslatorV3(
-    version='2018-05-01',
-    authenticator=authenticator
-)
-language_translator.set_service_url(IBM_URL)
 
 def translate(context, data_dict):
+    ibm_url =  config.get('ckanext.translate.ibm_url')
+    ibm_api_key = config.get('ckanext.translate.ibm_key')
+
     tk.check_access("translate", context, data_dict)
     data, errors = tk.navl_validate(
         data_dict, schema.translate(), context)
 
-    translate_from = data_dict['from']
-    translate_to = data_dict['to']
-    translate_keys, translate_values = zip(*data["input"].items())
-
     if errors:
         raise tk.ValidationError(errors)
 
-    try:
-        translation = language_translator.translate(text =list(translate_values), 
-            source = translate_from,
-            target = translate_to,
-            ).get_result()
+    translate_keys, translate_values = zip(*data["input"].items())
 
-    except ApiException as ex:  
-        raise tk.ValidationError({'message': ex.message})
+    translate_req_dict= {
+            "text": list(translate_values),
+            "source": data_dict['from'],
+            "target": data_dict['to'],
+        }
+
+    try:
+        response = requests.post('{}/v3/translate?{}'.format(ibm_url, 'version=2018-05-01'), 
+                    auth=('apikey', ibm_api_key),
+                    headers= {"Content-Type": "application/json"},
+                    data=json.dumps(translate_req_dict)
+                    )  
+
+        response.raise_for_status()
+    except requests.HTTPError as e:
+        raise tk.ValidationError({'message': '%s' % e})
 
     translated_dict = {}
-    for index, translated_item in enumerate(translation['translations']):
+    for index, translated_item in enumerate(response.json()['translations']):
             translated_dict.update({ list(translate_keys)[index]: translated_item['translation'] })
 
     return {"output" : translated_dict}
