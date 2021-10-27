@@ -1,4 +1,4 @@
- [![CKAN](https://img.shields.io/badge/ckan-2.8-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.8) [![CKAN](https://img.shields.io/badge/ckan-2.9-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.9) 
+ [![CKAN](https://img.shields.io/badge/ckan-2.7-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.7) [![CKAN](https://img.shields.io/badge/ckan-2.8-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.8) [![CKAN](https://img.shields.io/badge/ckan-2.9-orange.svg?style=flat-square)](https://github.com/ckan/ckan/tree/2.9) 
 
  Note: This plugin is tested with CKAN 2.8 or later version but hasn't been tested on earlier version. 
 
