@@ -52,7 +52,7 @@ To install ckanext-translate extension.
   ckanext.translate.ignore_list_path=/srv/app/ignore_list.txt
   ```
 
-  **Note:** The ignore list is not case-sensitive, so you don't need to worry about capitalization (e.g. "CKAN is awesome" and "ckan is awesome" will both be ignored). One important detail is that it can't detect stylized text (e.g. "CKAN is awesome" will not match "CKAN is _awesome_") or spelling variations/typos (e.g. "CKAN is awesome" will not match "CKAN is awsome"). If you need to handle these cases, you can add them to the ignore list as well.
+  **Note:** The ignore list is not case-sensitive, so you don't need to worry about capitalization (e.g. "CKAN is awesome" will match "ckan is awesome" and occurrences of both will be retained properly). One important detail is that it can't detect stylized text (e.g. "CKAN is awesome" will not match "CKAN is _awesome_") or spelling variations/typos (e.g. "CKAN is awesome" will not match "CKAN is awsome"), which means they will be translated. If you need to handle these additional cases, you must add them to the ignore list as well.
 
 ## API Documentation
 
