@@ -31,7 +31,7 @@ To install ckanext-translate extension.
 
 ## Config settings
 
-  The following environment variables must be added. To get a Google Translate API key, follow the instructions [here](https://cloud.google.com/translate/docs/setup).
+  The following environment variables must be added. To configure the Google Translate API service (setup a project, add IAM roles, generate a service account file, etc.), follow the instructions [here](https://cloud.google.com/translate/docs/setup).
 
   ```
   ckanext.translate.google_service_account_file=/path/to/service_account.json
@@ -51,6 +51,8 @@ To install ckanext-translate extension.
   ```
   ckanext.translate.ignore_list_path=/srv/app/ignore_list.txt
   ```
+
+  **Note:** The ignore list is not case-sensitive, so you don't need to worry about capitalization (e.g. "CKAN is awesome" and "ckan is awesome" will both be ignored). One important detail is that it can't detect stylized text (e.g. "CKAN is awesome" will not match "CKAN is _awesome_") or spelling variations/typos (e.g. "CKAN is awesome" will not match "CKAN is awsome"). If you need to handle these cases, you can add them to the ignore list as well.
 
 ## API Documentation
 
