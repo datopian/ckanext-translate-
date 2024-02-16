@@ -96,7 +96,7 @@ def translate(context, data_dict):
             source_language_code=data_dict["from"],
             target_language_code=data_dict["to"],
             parent=parent,
-            mime_type="text/plain",
+            mime_type="text/html",
         )
 
     except Exception as e:
