@@ -1,7 +1,6 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 
-from six import text_type
 from ckanext.translate.logic import (
     action, auth
 )
@@ -23,8 +22,8 @@ class TranslatePlugin(plugins.SingletonPlugin):
     def update_config_schema(self, schema):
         not_empty = toolkit.get_validator("not_empty")
         schema.update({
-            'ckanext.translate.ibm_url': [not_empty, text_type],
-            'ckanext.translate.ibm_key': [not_empty, text_type],
+            'ckanext.translate.ibm_url': [not_empty, str],
+            'ckanext.translate.ibm_key': [not_empty, str],
         })
         return schema
     

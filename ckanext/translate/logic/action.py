@@ -87,7 +87,7 @@ def translate(context, data_dict):
     if errors:
         raise tk.ValidationError(errors)
 
-    translate_keys, translate_values = zip(*data["input"].items())
+    translate_keys, translate_values = list(zip(*list(data["input"].items())))
     translate_values, hash_to_original = _ignore_terms(translate_values)
 
     try:
@@ -105,7 +105,7 @@ def translate(context, data_dict):
     translated_dict = {}
 
     for index, translated_item in enumerate(response.translations):
-        for hash_value, original_text in hash_to_original.items():
+        for hash_value, original_text in list(hash_to_original.items()):
             pattern = re.compile(re.escape(hash_value))
             translated_item.translated_text = pattern.sub(
                 lambda _: original_text, translated_item.translated_text
@@ -121,3 +121,4 @@ def get_actions():
     return {
         "translate": translate,
     }
+
